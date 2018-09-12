@@ -26,7 +26,7 @@ namespace oop_lab_2
             decimal bankBalance = 53005.25M;//System.Decimal
 
             //b  Выполните 5 операций явного и 5 неявного приведения. 
-           
+
             // явный
             double x = 1.2;
             int b1 = (int)x;
@@ -56,7 +56,7 @@ namespace oop_lab_2
 
             //d Продемонстрируйте работу с неявно типизированной переменной
 
-            var var1 ="sd";
+            var var1 = "sd";
             var var2 = 23232;
             //object
 
@@ -98,13 +98,13 @@ namespace oop_lab_2
 
             //сцепление
             Console.WriteLine("сцепление");
-            string s3 = String.Concat(s1,' ',s2, "!!!"); //cцепление
+            string s3 = String.Concat(s1, ' ', s2, "!!!"); //cцепление
             Console.WriteLine(s3);
             Console.WriteLine();
-            
+
             //копирование
             Console.WriteLine("копирование");
-            string s4 = String.Copy(s1+s2);
+            string s4 = String.Copy(s1 + s2);
             Console.WriteLine(s4);
             Console.WriteLine();
 
@@ -116,7 +116,7 @@ namespace oop_lab_2
 
             //разделение строки на слова
             Console.WriteLine("разделение строки на слова");
-            string[] s6 = (s1+' '+s1+' '+s2+' '+s2).Split(new char[] { ' ' });
+            string[] s6 = (s1 + ' ' + s1 + ' ' + s2 + ' ' + s2).Split(new char[] { ' ' });
             foreach (string s in s6)
             {
                 Console.WriteLine(s);
@@ -134,7 +134,7 @@ namespace oop_lab_2
 
             //удаление заданной подстроки
             Console.WriteLine("удаление заданной подстроки");
-           
+
             text = text.Remove(text.Length - 10);
             Console.WriteLine(text);
             Console.WriteLine();
@@ -149,7 +149,7 @@ namespace oop_lab_2
             string nullString = null;
             Console.WriteLine(nullString == null); // True
             Console.WriteLine(nullString == ""); // False
-           // Console.WriteLine(nullString.Length == 0); // NullReferenceException
+                                                 // Console.WriteLine(nullString.Length == 0); // NullReferenceException
 
             /*string.IsNullOrEmpty позволяет проверить является
              * ли строка null или пустой.*/
@@ -201,7 +201,7 @@ namespace oop_lab_2
             {
                 for (int j = 0; j < columns; j++)
                 {
-                    Console.Write(mas[i, j]+"\t");
+                    Console.Write(mas[i, j] + "\t");
                 }
                 Console.WriteLine();
             }
@@ -212,19 +212,19 @@ namespace oop_lab_2
              * Поменяйте произвольный элемент (пользователь 
              * определяет позицию и значение). */
 
-            string[] masString = new string[4] { "Меня ","зовут ","Артем ","Радчиков."};
-            foreach(string st in masString)
+            string[] masString = new string[4] { "Меня ", "зовут ", "Артем ", "Радчиков." };
+            foreach (string st in masString)
             {
                 Console.Write(st);
             }
             Console.WriteLine();
 
-            Console.WriteLine("Размер массива: "+ masString.Length);
+            Console.WriteLine("Размер массива: " + masString.Length);
 
             Console.Write("Введите позицию: ");
-            int choice =Convert.ToInt32(Console.ReadLine());
+            int choice = Convert.ToInt32(Console.ReadLine());
 
-            if (masString.Length-1 < choice)
+            if (masString.Length - 1 < choice)
             {
                 Console.WriteLine("нет такого элемента");
             }
@@ -238,7 +238,7 @@ namespace oop_lab_2
                     Console.Write(st);
                 }
             }
-            
+
             Console.WriteLine();
 
             /*c. Создайте ступечатый (не выровненный) массив вещественных 
@@ -250,6 +250,8 @@ namespace oop_lab_2
             masDouble[1] = new double[3];
             masDouble[2] = new double[4];
 
+            Console.WriteLine("Введите значения для элементов массива:");
+
             for (i = 0; i < masDouble.Length; i++)
             {
                 for (int j = 0; j < masDouble[i].Length; j++)
@@ -259,6 +261,7 @@ namespace oop_lab_2
                 }
                 Console.WriteLine();
             }
+
             for (i = 0; i < masDouble.Length; i++)
             {
                 for (int j = 0; j < masDouble[i].Length; j++)
@@ -267,6 +270,80 @@ namespace oop_lab_2
                 }
                 Console.WriteLine();
             }
+            /*d. Создайте неявно типизированные переменные для хранения
+             * массива и строки*/
+
+            var masVarForMas = new[]
+            {
+                new[]{1,2,3,4},
+                new[]{5,6,7,8},
+            };
+            var masVarForString = new[] { "Это", "массив", "для", "строк" };
+
+            //4) Кортежи
+
+            /*a. Задайте кортеж из 5 элементов с типами 
+             * int, string, char, string, ulong*/
+
+            (int, string, char, string, ulong) tuple1 = (18, "Артем", 'Д', "Радчиков", 611L);
+
+            // b.Сделайте именование его элементов
+            (int, string, char, string, ulong) tuple2 = (Age: 18, name: "Артем", patronymic: 'Д', surname: "Радчиков", typeUlong: 611L);
+            var tuple3 = (Age: 18, name: "Артем", patronymic: 'Д', surname: "Радчиков", typeUlong: 565656565611L);
+
+            var (аgeForTuple, name, patronymic, surname, typeUlong) = (18, "Артем", 'Д', "Радчиков", 611L);
+
+            Console.WriteLine("c. Выведите кортеж на консоль целиком и выборочно (1, 3, 4  элементы) ");
+            Console.WriteLine(tuple1);
+
+            Console.WriteLine($"{tuple1.Item1}\t{tuple1.Item3}\t{tuple1.Item4}");
+
+            Console.WriteLine($"{аgeForTuple}\t{patronymic}\t{surname}");
+
+            Console.WriteLine($"{tuple3.Age}\t{tuple3.patronymic}\t{tuple3.surname}");
+
+            // d.Выполните распаковку кортежа в переменные.
+            var (one, two, three, four, five) = tuple1;
+            Console.WriteLine($"{one}\t{two}\t{three}\t{four}\t{five}");
+            // e.Сравните два кортежа. 
+
+            Console.WriteLine($"tuple1 == tuple2? : { tuple1 == tuple2}");
+
+            /*5) Создайте локальную функцию в main и вызовите ее. 
+             * Формальные параметры функции– массив целых и строка.
+             * Функция должна вернуть кортеж, содержащий: максимальный и 
+             * минимальный элементы массива, сумму элементов массива и 
+             * первую букву строки .*/
+             
+            (int, int, int, char) functionForTask6(int[] Mas, string Str)
+            {
+                int maxElem = Mas[0];
+                int minElem = Mas[0];
+                int sum = 0;
+                char firstChar;
+
+                foreach(int elem in Mas)
+                {
+                    if(maxElem<elem)
+                    {
+                        maxElem = elem;
+                    }
+                    if(minElem>elem)
+                    {
+                        minElem = elem;
+                    }
+                    sum += elem;
+                }
+
+                firstChar = Str[0];
+
+                return (max: maxElem, min: minElem, sum: sum, first: firstChar);
+            }
+
+            int[] masOfInt = { 1, 2, 3, 4, 5, 6, 7 };
+            string strForTask6="Привет";
+            var tupleForTask6 = functionForTask6(masOfInt, strForTask6);
+            Console.WriteLine(tupleForTask6);
 
             Console.ReadKey();
 
